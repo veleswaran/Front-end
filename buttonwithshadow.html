@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,*::after,*::before{
+            box-sizing: border-box;
+        }
+        body{
+            min-height: 100vh;
+            display: grid;
+            color: #14f7ff ;
+            background: #001414;
+            overflow: hidden;
+            place-items: center;
+        }
+
+        .neon{
+            font-size: 3rem;
+            display:inline-block;
+            position: relative;
+            cursor: pointer;
+            border:#14f7ff 0.125em,solid;
+            padding:10px 40px;
+            border-radius: 0.25em;
+            text-shadow: 0 0 .20em #fff7,0 0 .30em #14f7ff;
+            box-shadow:inset 0 0 .5em #14f7ff,0 0 0.5em #14f7ff;
+
+        }
+
+        .neon::before{
+            content: "";
+            position: absolute;
+            top: 140%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #14f7ff;
+            transform: perspective(0.2em) rotateX(10deg) scale(1.3,0.4);
+            filter: blur(0.5em);
+            opacity: 0.6;
+            pointer-events: none;
+            transition: opacity 1s linear;
+        }
+        .neon::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #14f7ff;
+            box-shadow:  0 0 2em #14f7ff;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 1s linear;
+        }
+        .neon:hover::after{
+            opacity: 1;
+        }
+        .neon:hover::before{
+            opacity: 1;
+        }
+        .neon:hover,.neon:focus{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a class="neon">will you</a>
+</body>
+</html>
