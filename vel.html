@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .section{
+            width: 900px;
+            height: 900px;
+            margin-left: 10%;
+            margin-top: 10vh;
+            border-radius: 10px;
+            background-color: black;
+            position: relative;
+        }
+        @property --angle{
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        .section::after , .section::before{
+            content: "";
+            background-image: conic-gradient(from var(--angle),transparent 80%, blue, white);
+            width: 100%;
+            height: 100%;
+            translate: -50% -50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 4px;
+            z-index: -1;
+            border-radius: 10px;
+            animation: 4s spin linear infinite;
+        }
+        @keyframes spin {
+            from{
+                --angle:0deg
+            }to{
+                --angle:360deg
+            }
+        }
+        .section::before{
+            filter: blur(1.5rem) opacity(0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+    </div>
+    
+</body>
+</html>
